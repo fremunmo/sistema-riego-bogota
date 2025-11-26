@@ -1,8 +1,22 @@
 import os
+
 class Config:
-    """Configuración del sistema de riego"""
-    def __init__(self):
-        self.intervalo_riego = int(os.getenv("INTERVALO_RIEGO", "3600"))  # 1 hora por defecto
-        self.duracion_riego = int(os.getenv("DURACION_RIEGO", "300"))     # 5 minutos por defecto
-        self.humedad_umbral = float(os.getenv("HUMEDAD_UMBRAL", "30.0"))  # 30% por defecto
-        self.zonas = ["norte", "sur", "este", "oeste"]
+    """Configuración del sistema de riego para Bogotá"""
+    
+    # Configuración de sensores
+    SENSOR_TEMPERATURA_PIN = 4
+    SENSOR_HUMEDAD_PIN = 17
+    SENSOR_LLUVIA_PIN = 27
+    
+    # Umbrales para Bogotá (puedes ajustarlos)
+    HUMEDAD_MINIMA = 40  # Porcentaje
+    TEMPERATURA_MAXIMA = 25  # Grados Celsius
+    PROBABILIDAD_LLUVIA_UMBRAL = 30  # Porcentaje
+    
+    # Configuración del riego
+    TIEMPO_RIEGO_SEGUNDOS = 300  # 5 minutos
+    INTERVALO_VERIFICACION_MINUTOS = 30
+    
+    # API del clima (puedes usar OpenWeatherMap)
+    API_KEY_CLIMA = os.getenv('API_KEY_CLIMA', 'tu-api-key-aqui')
+    CIUDAD = "Bogota,CO"
