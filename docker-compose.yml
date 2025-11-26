@@ -5,9 +5,7 @@ services:
     build: .
     container_name: sistema-riego-bogota
     environment:
-      - INTERVALO_RIEGO=3600
-      - DURACION_RIEGO=300
-      - HUMEDAD_UMBRAL=30.0
+      - API_KEY_CLIMA=${API_KEY_CLIMA}
+    restart: unless-stopped
     volumes:
       - ./app:/app
-    restart: unless-stopped
