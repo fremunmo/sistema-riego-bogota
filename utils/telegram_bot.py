@@ -17,13 +17,13 @@ class TelegramNotifier:
         try:
             response = requests.post(url, json=payload, timeout=10)
             if response.status_code == 200:
-                print("✅ Notificación enviada a Telegram")
+                print("Notificación enviada a Telegram")
             else:
-                print(f"❌ Error al enviar: {response.text}")
+                print(f"Error al enviar: {response.text}")
         except Exception as e:
-            print(f"❌ Error de conexión: {e}")
+            print(f"Error de conexión: {e}")
 
 # Ejemplo de uso
 if __name__ == "__main__":
     bot = TelegramNotifier()
-    bot.enviar_notificacion("🤖 <b>Bot configurado correctamente!</b>")
+    bot.enviar_notificacion("<b>Bot configurado correctamente!</b>")
