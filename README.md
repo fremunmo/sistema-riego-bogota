@@ -12,13 +12,10 @@ Sistema automatizado de riego que considera las condiciones climáticas específ
 ## 📋 Requisitos
 
 - Python 3.8+
-- Docker (opcional)
-
 ## 🛠️ Instalación
-
 ### Método 1: Python tradicional
 ```bash
-git clone https://github.com/tu-usuario/sistema-riego-bogota.git
+git clone 
 cd sistema-riego-bogota
 pip install -r requirements.txt
 python app/main.py
