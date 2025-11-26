@@ -3,7 +3,11 @@ version: '3.8'
 services:
   sistema-riego:
     build: .
-    ports:
-      - "5000:5000"
+    container_name: sistema-riego-bogota
     environment:
-      - DEBUG=True
+      - INTERVALO_RIEGO=3600
+      - DURACION_RIEGO=300
+      - HUMEDAD_UMBRAL=30.0
+    volumes:
+      - ./app:/app
+    restart: unless-stopped
