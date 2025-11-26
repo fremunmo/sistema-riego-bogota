@@ -19,9 +19,9 @@ class TelegramNotifier:
             if response.status_code == 200:
                 print("Notificación enviada a Telegram")
             else:
-                print(f"Error al enviar: {response.text}")
+                print("Error al enviar: {response.text}")
         except Exception as e:
-            print(f"Error de conexión: {e}")
+            print("Error de conexión: {e}")
 
 # Ejemplo de uso
 if __name__ == "__main__":
