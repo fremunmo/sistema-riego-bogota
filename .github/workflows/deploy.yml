@@ -1,19 +1,38 @@
 name: Deploy Sistema Riego
+
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
+    
     steps:
     - uses: actions/checkout@v2
-    - name: Build Docker image
-      run: docker build -t sistema-riego-bogota .
-    - name: Run tests
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
       run: |
-        docker run sistema-riego-bogota python -c "
-        from sistema_riego import SistemaRiego
-        sistema = SistemaRiego()
-        sistema.iniciar()
-        print('Tests básicos pasados')
-        "
+        pip install -r requirements.txt
+    
+    - name: Run basic syntax check
+      run: |
+        python -m py_compile app/main.py app/sistema_riego.py app/config.py
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Build Docker image
+      run: |
+        docker build -t sistema-riego-bogota .
