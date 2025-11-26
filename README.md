@@ -15,7 +15,7 @@ Sistema automatizado de riego que considera las condiciones climáticas específ
 ## 🛠️ Instalación
 ### Método 1: Python tradicional
 ```bash
-git clone 
+git clone https://github.com/fremunmo/sistema-riego-bogota.git
 cd sistema-riego-bogota
 pip install -r requirements.txt
 python app/main.py
