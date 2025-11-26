@@ -1,10 +1,15 @@
+
+
 from flask import Flask, jsonify, render_template_string
+from waitress import serve
 import datetime
 import time
 import random
+import os
 from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
 import pytz  # Necesitarás instalar esta librería
+
 
 app = Flask(__name__)
 
@@ -335,7 +340,14 @@ scheduler.start()
 # Apagar el scheduler al cerrar la aplicación
 atexit.register(lambda: scheduler.shutdown())
 
+# ... todo tu código actual de Flask ...
+
 if __name__ == '__main__':
-    print("🚀 Iniciando Sistema de Riego de Bogotá...")
-    print(f"📍 Hora de inicio (Bogotá): {sistema.obtener_hora_bogota().strftime('%Y-%m-%d %H:%M:%S')}")
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    if os.environ.get('ENV') == 'production':
+        # En producción usar Waitress
+        print("🚀 Servidor en producción con Waitress")
+        serve(app, host='0.0.0.0', port=5000)
+    else:
+        # En desarrollo usar servidor de Flask
+        print("🔧 Servidor en desarrollo")
+        app.run(debug=True, host='0.0.0.0', port=5000)
