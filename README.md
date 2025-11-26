@@ -1,9 +1,24 @@
-# Sistema de Riego Automático - Bogotá
-Sistema automatizado para gestión de riego en zonas verdes de Bogotá.
-## Características
-- Control de riego por zonas
-- Configuración de intervalos y duración
-- Integración con sensores de humedad
-## Instalación
+# 🌱 Sistema de Riego Inteligente para Bogotá
+
+Sistema automatizado de riego que considera las condiciones climáticas específicas de Bogotá.
+
+## 🚀 Características
+
+- Monitoreo de temperatura y humedad
+- Detección de probabilidad de lluvia
+- Riego automatizado basado en condiciones
+- Configuración optimizada para el clima bogotano
+
+## 📋 Requisitos
+
+- Python 3.8+
+- Docker (opcional)
+
+## 🛠️ Instalación
+
+### Método 1: Python tradicional
 ```bash
-docker-compose up -d
+git clone https://github.com/tu-usuario/sistema-riego-bogota.git
+cd sistema-riego-bogota
+pip install -r requirements.txt
+python app/main.py
