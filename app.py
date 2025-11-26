@@ -143,14 +143,16 @@ def ejecutar_ciclo():
 
 @app.route('/reporte')
 def reporte():
-    """Muestra reporte en JSON"""
-    reporte_data = {
+    """Muestra reporte"""
+    mensaje = sistema.muestra_reporte()
+    return render_template_string(HTML_TEMPLATE,
         "fecha_reporte": sistema.obtener_hora_bogota().isoformat(),
         "area_cancha": sistema.area_total,
         "consumo_agua_total": sistema.consumo_agua,
         "total_riegos": len(sistema.historial_riego),
         "humedad_actual": sistema.humedad_actual,
         "historial_riegos": sistema.historial_riego[-5:]  # Últimos 5
+        mensaje=mensaje
     }
     
     return jsonify(reporte_data)
